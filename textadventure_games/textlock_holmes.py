@@ -26,7 +26,7 @@ def maingame(s):
     prompt2 = '**Willst du hineingehen?** [1/2/3]'
     prompt3 = (
         '1 = Nein. \n'
-        '2 = Mh, ich rufe lieber erstmal Inspector Lestrade an.\n'
+        '2 = Mh, ich rufe lieber erstmal Inspector Lestrade an. \n'
         '3 = Ja, sofort! \n'
         )
 
@@ -35,7 +35,7 @@ def maingame(s):
     print(prompt2)
     print(prompt3)
 
-    ans2 = input('')
+    ans2 = int(input(''))
 
     if ans2 == 1:
         return gesicht_am_fenster(s)
@@ -47,6 +47,30 @@ def maingame(s):
         prompt4 = 'Bitte entscheide dich für 1., 2. oder 3.'
         print(prompt4)
         return maingame(s)
+
+
+def maingame_version2(s):
+
+    prompt0 = (
+                'Mh, der Inspektor ist nicht ans Telefon gegangen.'
+                'Vielleicht geht er aber dran, wenn ich nochmal anrufe?'
+                '**Was willst du jetzt versuchen?** [1/2/3]'
+    )
+    prompt1 = (
+        '1 = Ich rufe nochmal Inspektor Lestrade an. \n'
+        '2 = Ich gehe doch ins Haus. \n'
+    )
+    print(prompt0)
+    ans2 = int(input(prompt1))
+
+    if ans2 == 2:
+        return gesicht_am_fenster(s)
+    elif ans2 == 1:
+        return call_lestrade(s)
+    else:
+        prompt2 = 'Bitte entscheide dich für 1 oder 2'
+        print(prompt2)
+        return maingame_version2(s)
 
 
 def game_exit(s):
@@ -75,6 +99,31 @@ def newstart(s):
     return maingame(s)
 
 
+def gesicht_am_fenster_version2(s):
+    prompt0 = (
+        'Du wartest also auf den Inspektor und schaust dir das Fenster'
+        'genauer an, in dem sich das Taschenlampenlicht bewegt'
+        'Auf einmal siehst du ein bleiches Gesicht am Fenster.'
+        'Die Person hat noch nicht nach draußen gesehen und '
+        'dich noch nicht bemerkt... \n')
+    print(prompt0)
+    ans1 = int(input(
+        '**Was wirst du nun tun?** [1/2/3]'
+        '1. Wegrennen\n'
+        '2. Dich hinter eine Hecke ducken und weiter beobachten\n'
+        '3. Ins Haus hineingehen, '
+        ' denn irgendwie hast jetzt du doch Mut bekommen.'
+    ))
+    print(ans1)
+
+    if ans1 == 1:
+        return stolpern(s)
+    elif ans1 == 2:
+        return beobachten(s)
+    else:
+        return inside_house(s)
+
+
 def call_lestrade(s):
     """Ruft Inspektor Lestrade an. Dialog mit diesem."""
     prompt0 = (
@@ -98,6 +147,7 @@ def call_lestrade(s):
         print(prompt1)
         prompt4 = ('“Inspektor Lestrade von Scottland Yard. Wer spricht da?”'
                    '[Gib hier deinen Namen ein] \n')
+        global name
         name = input(prompt4)
         print("Guten Abend,", name, "was gibt es Neues?")
         answer1 = (' "Inspektor, ich stehe in einer Seitengasse nahe '
@@ -106,13 +156,13 @@ def call_lestrade(s):
                    'Die Türe ist offenbar aufgebrochen worden und '
                    'im ersten Stock sehe ich das Licht einer Taschenlampe." ')
         print(answer1)
-        prompt5 = (' "Ah ja. Bleiben Sie, wo sie sind. UIch komme vorbei'
+        prompt5 = (' "Ah ja. Bleiben Sie, wo sie sind. Ich komme vorbei '
                    'um mir das anzusehen."')
         print(prompt5)
+        return gesicht_am_fenster_version2(s)
     elif random_bit == 1:
         print(prompt2)
-
-    return s
+        return maingame_version2(s)
 
 
 def inside_house(s):
@@ -121,12 +171,12 @@ def inside_house(s):
     return s
 
 
-# Spielsart
+# Spielstart
 def enter_game(s):
     """Begrüßt den Spieler und fragt, ob er das Spiel starten möchte."""
     start_prompt = 'Willkommen zum Sherlock Holmes Text Adventure Game.'
     print(start_prompt)
-    ans = input('**Willst du das Spiel starten?** [ja/nein] \n')
+    ans = str(input('**Willst du das Spiel starten?** [ja/nein] \n'))
 
     if ans.lower().strip() == 'ja':
         return maingame(s)
@@ -136,10 +186,42 @@ def enter_game(s):
         return newstart(s)
 
 
-def lestrade_arrives(s):
-    prompt0 = 'dummy'
-    print(prompt0)
+def papier_allein_lesen(s):
     return s
+
+
+def papier_zeigen(s):
+    return s
+
+
+def lestrade_arrives(s):
+    prompt0 = (
+                'Du fühlst, wie dich jemand schüttelt, während du langsam',
+                'wieder zu Bewusstsein kommst.'
+                'Wie viel Zeit ist wohl vergangen?',
+                name, '", was ist passiert?"'
+                'hörst du Inspektor Lestrade hektisch sagen.'
+                'Du setzt dich langsam auf und'
+                'stützt dich dabei auf dem Boden ab. Dabei bemerkst du,'
+                'dass unter deiner Hand ein zerknülltes Blatt Papier liegt'
+    )
+    ans0 = int(input(
+                '**Was möchtest du tun?** [1/2]'
+                '1. Das Papier direkt Inspektor Lestrade zeigen.\n'
+                '2. Das Papier unauffällig in der Hand behalten'
+                'und dem Inspektor nicht zeigen\n'
+    ))
+    print(prompt0)
+    print(ans0)
+
+    if ans0 == 1:
+        return papier_allein_lesen(s)
+    elif ans0 == 2:
+        return papier_zeigen(s)
+    else:
+        prompt4 = 'Bitte entscheide dich für 1. oder 2.'
+        print(prompt4)
+        return lestrade_arrives(s)
 
 
 def stolpern(s):
@@ -154,12 +236,12 @@ def stolpern(s):
                 'Einfahrt des Hauses parken.'
                 'Dann verlierst du das Bewusstsein...'
     )
-    ans0 = input(
+    ans0 = int(input(
                 '**Was willst du nun tun?** [1/2/3]'
                 '1. Bewusstlos warten \n'
                 '2. Das Spiel beenden\n'
                 '3. Das Spiel von vonre beginnen\n'
-    )
+    ))
     print(prompt0)
     print(ans0)
 
@@ -189,11 +271,12 @@ def gesicht_am_fenster(s):
         'Die Person hat noch nicht nach draußen gesehen und '
         'dich noch nicht bemerkt... \n')
     print(prompt0)
-    ans1 = input(
+    ans1 = int(input(
         '**Was wirst du tun?** [1/2/3]'
         '1. Wegrennen\n'
         '2. Dich hinter eine Hecke ducken und weiter beobachten\n'
-        '3. Ins Haus hineingehen, denn irgendwie hast du doch Mut bekommen.')
+        '3. Ins Haus hineingehen, denn irgendwie hast du doch Mut bekommen.'
+    ))
     print(ans1)
 
     if ans1 == 1:
