@@ -1,3 +1,4 @@
+# Aufgabe 3-2 Text Adventure Game
 # Imports
 
 import numpy as np
@@ -12,14 +13,14 @@ def maingame(s: str) -> str:
         'Du befindest dich im London des 21. Jahrhunderts. '
         'Du stehst auf einer dunklen, menschenleeren Straße. '
         'Leichter Nieselregen setzt sich auf deinem Mantel ab '
-        'und du spürst eine Windbrise durch dein Haar streichen.'
+        'und du spürst eine Windbrise durch dein Haar streichen. '
         'Du siehst dich um. Alles um dich herum ist dunkel. '
-        'Alles? Alles, bis auf ein einzelnes Fenster im ersten Stock'
+        'Alles? Alles, bis auf ein einzelnes Fenster im ersten Stock. '
         'Es sieht aus, als würde jemand mit einer Taschenlampe '
-        'durch das Zimmer laufen'
-        'eines etwas heruntergekommenen Backsteinhauses zu deiner Rechten.'
+        'durch das Zimmer laufen, '
+        'eines etwas heruntergekommenen Backsteinhauses zu deiner Rechten. '
         'Du näherst dich, sorgsam darauf bedacht, deine Schritte nicht zu '
-        'laut werden zu lassen.Beim Vorgarten angekommen bemerkst du, '
+        'laut werden zu lassen. Beim Vorgarten angekommen bemerkst du, '
         'dass die Eingangstüre des Hauses einen Spalt breit offen steht.'
     )
     prompt2: str = '**Willst du hineingehen?** [1/2/3]'
@@ -44,19 +45,17 @@ def maingame(s: str) -> str:
         prompt4: str = 'Bitte entscheide dich für 1., 2. oder 3.'
         print(prompt4)
         return maingame(s)
-# ---
 
 
-# --- Weitere Funktionen
 def maingame_version2(s: str) -> str:
     prompt0: str = (
-        'Mh, der Inspektor ist nicht ans Telefon gegangen.'
-        'Vielleicht geht er aber dran, wenn ich nochmal anrufe?'
-        '**Was willst du jetzt versuchen?** [1/2/3]'
+        'Mh, der Inspektor ist nicht ans Telefon gegangen. '
+        'Vielleicht geht er aber dran, wenn ich nochmal anrufe? '
+        '**Was willst du jetzt versuchen?** [1/2/3]\n'
     )
     prompt1: str = (
         '1. Ich rufe nochmal Inspektor Lestrade an. \n'
-        '2. Ich gehe doch ins Haus. \n'
+        '2. Ich gehe doch ins Haus.\n'
     )
     print(prompt0)
     ans2: int = int(input(prompt1))
@@ -74,7 +73,7 @@ def maingame_version2(s: str) -> str:
 def game_exit(s: str) -> str:
     """Beendet das Spiel bei Nein Antwort"""
     print(
-        'Sherlock Holmes schüttelt enttäuscht den Kopf'
+        'Sherlock Holmes schüttelt enttäuscht den Kopf '
         'und geht...( ͡ಠ ʖ̯ ͡ಠ)'
     )
     return s
@@ -83,8 +82,8 @@ def game_exit(s: str) -> str:
 def dumb(s: str) -> str:
     """Antwort, wenn der Spieler die Anweisung nicht versteht."""
     prompt0: str = (
-         'Das war keine mögliche Antwort... _/(.-.)'
-         'Versuche es gerne nochmal.'
+        'Das war keine mögliche Antwort... _/(.-.) '
+        'Versuche es gerne nochmal.'
     )
     print(prompt0)
     return maingame(s)
@@ -92,27 +91,29 @@ def dumb(s: str) -> str:
 
 def newstart(s: str) -> str:
     """Neustart des Spiels"""
-    prompt0: str = ('John Watson hat dich leider nicht verstanden'
-                    '... _(ಠ_ಠ)_/ Aber versuche es gern nochmal!')
+    prompt0: str = (
+        'John Watson hat dich leider nicht verstanden '
+        '... _(ಠ_ಠ)_/ Aber versuche es gern nochmal!'
+    )
     print(prompt0)
     return maingame(s)
 
 
 def gesicht_am_fenster_version2(s: str) -> str:
     prompt0: str = (
-        'Du wartest also auf den Inspektor und schaust dir das Fenster'
-        'genauer an, in dem sich das Taschenlampenlicht bewegt'
-        'Auf einmal siehst du ein bleiches Gesicht am Fenster.'
+        'Du wartest also auf den Inspektor und schaust dir das Fenster '
+        'genauer an, in dem sich das Taschenlampenlicht bewegt. '
+        'Auf einmal siehst du ein bleiches Gesicht am Fenster. '
         'Die Person hat noch nicht nach draußen gesehen und '
         'dich noch nicht bemerkt... \n'
     )
     print(prompt0)
     ans1: int = int(input(
-        '**Was wirst du nun tun?** [1/2/3]'
+        '**Was wirst du nun tun?** [1/2/3]\n'
         '1. Wegrennen\n'
         '2. Dich hinter eine Hecke ducken und weiter beobachten\n'
         '3. Ins Haus hineingehen, '
-        ' denn irgendwie hast jetzt du doch Mut bekommen.'
+        'denn irgendwie hast jetzt du doch Mut bekommen.\n'
     ))
 
     if ans1 == 1:
@@ -133,37 +134,42 @@ def call_lestrade(s: str) -> str:
     )
     prompt1: str = 'Eine etwas unwirsche Stimme meldet sich.'
     prompt2: str = (
-        'Du warstest eine Minute, bis der Anrufbeantworter von Lestrade'
+        'Du warstest eine Minute, bis der Anrufbeantworter von Lestrade '
         'sich meldet: '
-        ' "Hier Inspektor Lestrade von Scottland Yard. Ich bin gerade nicht '
-        'erreichbar, aber hinterlassen Sie mir nach dem Ton eine Nachricht."'
+        '"Hier Inspektor Lestrade von Scottland Yard. Ich bin gerade nicht '
+        'erreichbar, aber hinterlassen Sie mir nach dem Ton eine Nachricht."\n'
     )
     print(prompt0)
     random_bit: bool = np.random.randint(0, 2, dtype=bool)
 
     if random_bit == 0:
         print(prompt1)
-        prompt4: str = (' "Inspektor Lestrade von Scottland Yard.'
-                        'Wer spricht da?” [Gib hier deinen Namen ein] \n'
-                        )
+        prompt4: str = (
+            '"Inspektor Lestrade von Scottland Yard. '
+            'Wer spricht da?” [Gib hier deinen Namen ein] \n'
+        )
         name = input(prompt4)
         print("Guten Abend,", name, "was gibt es Neues?")
         ans0: str = (
-            ' "Inspektor, ich stehe in einer Seitengasse nahe '
+            '"Inspektor, ich stehe in einer Seitengasse nahe '
             'der Brixton Road vor einem Haus in dem '
             'vermutlich eingebrochen wurde. '
             'Die Türe ist offenbar aufgebrochen worden und '
-            'im ersten Stock sehe ich das Licht'
-            'einer Taschenlampe."'
+            'im ersten Stock sehe ich das Licht '
+            'einer Taschenlampe."\n'
         )
         print(ans0)
-        prompt5: str = (' "Ah ja. Bleiben Sie, wo sie sind. Ich komme vorbei '
-                        'um mir das anzusehen."')
+        prompt5: str = (
+            '"Ah ja. Bleiben Sie, wo sie sind. Ich komme vorbei '
+            'um mir das anzusehen."\n'
+        )
         print(prompt5)
         return gesicht_am_fenster_version2(s)
+
     elif random_bit == 1:
         print(prompt2)
         return maingame_version2(s)
+
     else:
         prompt6: str = 'Bitte entscheide dich für 1. oder 2.'
         print(prompt6)
@@ -172,11 +178,11 @@ def call_lestrade(s: str) -> str:
 
 def final_game_stage(s: str) -> str:
     prompt0: str = (
-            ' Du fährst also in die Baker Street zu Sherlock Holmes.'
-            ' Jetzt kann das Abenteuer richtig beginnen! '
-            ' Aber das erfahren wir erst im nächsten Teil des '
-            ' **Sherlock Holmes Text Adventure**...'
-            ' Danke fürs Spielen! :) '
+        'Du fährst also in die Baker Street zu Sherlock Holmes. '
+        'Jetzt kann das Abenteuer richtig beginnen! '
+        'Aber das erfahren wir erst im nächsten Teil des '
+        '**Sherlock Holmes Text Adventure**... '
+        'Danke fürs Spielen! :) '
     )
     print(prompt0)
     return s
@@ -184,26 +190,25 @@ def final_game_stage(s: str) -> str:
 
 def inside_room(s: str) -> str:
     prompt0: str = (
-        ' Du öffnest die Türe und siehst zu deiner großen '
-        ' Überraschung Sherlock Holmes persönlich im Zimmer'
-        ' herumlaufen und offenbar etwas suchen.'
-        ' Er dreht sich um mit den Worten " ',
-        name, ', Dr. Watson ist spurlos verschwunden und ich denke, es gibt'
-        ' Hinweise, wo er sein könnte irgendwo hier in diesem  Zimmer" \n'
-        ' "Mr. Holmes, woher wissen Sie meinen Namen?"\n'
-        ' "Nun, woher wissen Sie meinen? Ihren habe ich vorhin ihrem Telefonat'
-        ' daußen mit Inpektor Lestrad entnehmen können.'
-        ' Habe da so meine Methoden..." \n'
-        ' "Niemand sonst hat so einen merkwürdigen'
-        ' Hut auf!"\n '
-        ' "Richtig deduziert, aber das ist kein merkwürdiger Hut, das ist'
-        ' "ein Deerstalker. Aber genug davon! Kommen Sie nun mit,'
-        '  um Dr. Watson zu finden, oder nicht?"\n'
+        'Du öffnest die Türe und siehst zu deiner großen '
+        'Überraschung Sherlock Holmes persönlich im Zimmer '
+        'herumlaufen und offenbar etwas suchen. '
+        'Er dreht sich um mit den Worten " ', name,
+        ', Dr. Watson ist spurlos verschwunden und ich denke, es gibt '
+        'Hinweise, wo er sein könnte, irgendwo hier in diesem Zimmer." \n'
+        '"Mr. Holmes, woher wissen Sie meinen Namen?"\n'
+        '"Nun, woher wissen Sie meinen? Ihren habe ich vorhin Ihrem Telefonat '
+        'draußen mit Inspektor Lestrade entnehmen können. '
+        'Habe da so meine Methoden..." \n'
+        '"Niemand sonst hat so einen merkwürdigen Hut auf!"\n '
+        '"Richtig deduziert, aber das ist kein merkwürdiger Hut, das ist '
+        'ein Deerstalker. Aber genug davon! Kommen Sie nun mit, '
+        'um Dr. Watson zu finden, oder nicht?"\n'
     )
     print(prompt0)
     prompt1 = (
-        '1. Ja, natürlich!'
-        '2. Nein, Sie schaffen das schon alleine...'
+        '1. Ja, natürlich!\n'
+        '2. Nein, Sie schaffen das schon alleine...\n'
     )
     ans0: int = int(input(prompt1))
 
@@ -219,27 +224,26 @@ def inside_room(s: str) -> str:
 
 def sherlock_coming(s: str) -> str:
     prompt0: str = (
-        ' Du wartest hinter der Statue und zu'
-        ' deiner Überraschung Skommt herlock Holmes persönlich aus dem Zimmer.'
-        ' In der linken Hand hat er einen zerknüllten Zettel und in der '
-        ' rechten eine Taschenlampe'
-        ' Er dreht sich zu dir um mit den Worten " ',
-        name, ', Dr. Watson ist spurlos verschwunden und ich denke, ich habe'
-        ' soeben Hinweise in diesem Zimmer gefunden" \n'
-        ' "Mr. Holmes, woher wissen Sie meinen Namen?"\n'
-        ' "Nun, woher wissen Sie meinen? Ihren habe ich vorhin ihrem Telefonat'
-        ' daußen mit Inpektor Lestrade entnehmen können.'
-        ' Habe da so meine Methoden..." \n'
-        ' "Niemand sonst hat so einen merkwürdigen'
-        ' Hut auf!"\n '
-        ' "Richtig deduziert, aber das ist kein merkwürdiger Hut, das ist'
-        ' "ein Deerstalker. Aber genug davon! Kommen Sie nun mit,'
-        '  um Dr. Watson zu finden, oder nicht?"\n'
+        'Du wartest hinter der Statue und zu '
+        'deiner Überraschung kommt Sherlock Holmes persönlich aus dem Zimmer. '
+        'In der linken Hand hat er einen zerknüllten Zettel und in der '
+        'rechten eine Taschenlampe. '
+        'Er dreht sich zu dir um mit den Worten " ', name,
+        ', Dr. Watson ist spurlos verschwunden und ich denke, ich habe '
+        'soeben Hinweise in diesem Zimmer gefunden." \n'
+        '"Mr. Holmes, woher wissen Sie meinen Namen?"\n'
+        '"Nun, woher wissen Sie meinen? Ihren habe ich vorhin Ihrem Telefonat '
+        'draußen mit Inspektor Lestrade entnehmen können. '
+        'Habe da so meine Methoden..." \n'
+        '"Niemand sonst hat so einen merkwürdigen Hut auf!"\n '
+        '"Richtig deduziert, aber das ist kein merkwürdiger Hut, das ist '
+        'ein Deerstalker. Aber genug davon! Kommen Sie nun mit, '
+        'um Dr. Watson zu finden, oder nicht?"\n'
     )
     print(prompt0)
     prompt1 = (
-        '1. Ja, natürlich!'
-        '2. Nein, Sie schaffen das schon alleine...'
+        '1. Ja, natürlich!\n'
+        '2. Nein, Sie schaffen das schon alleine...\n'
     )
     ans0: int = int(input(prompt1))
 
@@ -255,22 +259,22 @@ def sherlock_coming(s: str) -> str:
 
 def first_floor(s: str) -> str:
     prompt0: str = (
-         'Du gehst also die Treppe nach oben und hörst,'
-         'als du angekommen bist Schritte in dem Zimmer '
-         'zu deiner Linken.'
+        'Du gehst also die Treppe nach oben und hörst, '
+        'als du angekommen bist, Schritte in dem Zimmer '
+        'zu deiner Linken.\n'
     )
     prompt1: str = (
         '**Was willst du tun?**\n'
         '1. Ins Zimmer hineingehen\n'
         '2. Mich hinter einer Statue links vom Zimmer verstecken '
-        'und warten'
+        'und warten\n'
     )
     print(prompt0)
     ans0 = int(input(prompt1))
 
     if ans0 == 1:
         return inside_room(s)
-    elif ans0 == 1:
+    elif ans0 == 2:
         return sherlock_coming(s)
     else:
         prompt2: str = 'Bitte entscheide dich für 1. oder 2.'
@@ -280,39 +284,38 @@ def first_floor(s: str) -> str:
 
 def right_door(s: str) -> str:
     prompt0: str = (
-        'Du gehst also durch die rechte Türe und gelangst in eine'
-        'Küche. Von oben hörst du Schritte die Treppe herunte kommen.'
-        ' Zu deiner Überraschung Skommt herlock Holmes auf einmal in die'
-        ' Küche. In der linken Hand hat er einen '
-        ' zerknüllten Zettel und in der rechten eine Taschenlampe '
-        ' Er dreht sich zu dir mit den Worten " ',
-        name, ', Dr. Watson ist spurlos verschwunden und ich denke, ich habe'
-        ' soeben Hinweise in diesem Zimmer gefunden" \n'
-        ' "Mr. Holmes, woher wissen Sie meinen Namen?"\n'
-        ' "Nun, woher wissen Sie meinen? Ihren habe ich vorhin ihrem Telefonat'
-        ' daußen mit Inpektor Lestrade entnehmen können.'
-        ' Habe da so meine Methoden..." \n'
-        ' "Niemand sonst hat so einen merkwürdigen'
-        ' Hut auf!"\n '
-        ' "Richtig deduziert, aber das ist kein merkwürdiger Hut, das ist'
-        ' "ein Deerstalker. Aber genug davon! Kommen Sie nun mit,'
-        '  um Dr. Watson zu finden, oder nicht?"\n'
+        'Du gehst durch die rechte Türe und gelangst in eine Küche. '
+        'Von oben hörst du Schritte die Treppe herunterkommen. '
+        'Zu deiner Überraschung kommt Sherlock Holmes auf einmal in die '
+        'Küche. In der linken Hand hat er einen zerknüllten Zettel '
+        'und in der rechten eine Taschenlampe. '
+        'Er dreht sich zu dir mit den Worten: '
+        f'"{name}, Dr. Watson ist spurlos verschwunden und ich denke, '
+        'ich habe soeben Hinweise in diesem Zimmer gefunden." \n'
+        '"Mr. Holmes, woher wissen Sie meinen Namen?"\n'
+        '"Nun, woher wissen Sie meinen? Ihren habe ich vorhin Ihrem Telefonat '
+        'draußen mit Inspektor Lestrade entnehmen können. '
+        'Habe da so meine Methoden..." \n'
+        '"Niemand sonst hat so einen merkwürdigen Hut auf!"\n'
+        '"Richtig deduziert, aber das ist kein merkwürdiger Hut, '
+        'das ist ein Deerstalker. Aber genug davon! Kommen Sie nun mit, '
+        'um Dr. Watson zu finden, oder nicht?"\n'
     )
     print(prompt0)
     prompt1: str = (
-        '1. Ja, natürlich!'
-        '2. Nein, Sie schaffen das schon alleine...'
+        '1. Ja, natürlich!\n'
+        '2. Nein, Sie schaffen das schon alleine...\n'
     )
     print(prompt1)
     ans0: int = int(input(prompt1))
 
     if ans0 == 1:
         prompt2: str = (
-            ' Du fährst also mit Lestrade in die Baker Street.'
-            ' Jetzt kann das Abenteuer richtig beginnen! '
-            ' Aber das erfahren wir erst im nächsten Teil des '
-            ' **Sherlock Holmes Text Adventure**...'
-            ' Danke fürs Spielen! :) '
+            'Du fährst also mit Sherlock in die Baker Street. '
+            'Jetzt kann das Abenteuer richtig beginnen! '
+            'Aber das erfahren wir erst im nächsten Teil des '
+            '**Sherlock Holmes Text Adventure**...\n'
+            'Danke fürs Spielen! :) '
         )
         print(prompt2)
     elif ans0 == 2:
@@ -325,10 +328,10 @@ def right_door(s: str) -> str:
 
 def inside_house(s: str) -> str:
     prompt0: str = (
-        'Du stehst vor der Eingangstür und schaust durch den Spalt'
-        'in den verlassenen Flur, bevor du die Tür schließlich'
+        'Du stehst vor der Eingangstür und schaust durch den Spalt '
+        'in den verlassenen Flur, bevor du die Tür schließlich '
         'öffnest und hinein gehst. Du siehst direkt vor dir eine '
-        'Treppe, welche wohl in den ersten Stock führt.'
+        'Treppe, welche wohl in den ersten Stock führt. '
         'Rechts neben dir siehst du eine weitere Türe.'
     )
     print(prompt0)
@@ -347,7 +350,6 @@ def inside_house(s: str) -> str:
         return inside_house(s)
 
 
-# --- Spielstart
 def enter_game(s: str) -> str:
     """Begrüßt den Spieler und fragt, ob er das Spiel starten möchte."""
     start_prompt: str = 'Willkommen zum Sherlock Holmes Text Adventure Game.'
@@ -364,16 +366,16 @@ def enter_game(s: str) -> str:
 
 def papier_allein_lesen(s: str) -> str:
     prompt0: str = (
-        ' Auf dem Papier steht\n "Kommen Sie sofort in die Bakerstreet 221b.'
-        ' Dr. Watson ist spurlos verschwunden und Sie sind von Nutzen'
-        ' in der Angelegenheit.\n S.H.'
+        'Auf dem Papier steht\n "Kommen Sie sofort in die Bakerstreet 221b. '
+        'Dr. Watson ist spurlos verschwunden und Sie sind von Nutzen '
+        'in der Angelegenheit.\n S.H."'
     )
     prompt1: str = (
-        ' **Was willst du machen?**'
-        '1. Die Nachricht Inspektor Lestrade zeigen'
-        '2. Inspektor Lestrade sagen, dass du dich nicht'
-        'wohl fühlst und gehen musst - in Wahrheit gehst du'
-        'aber in die Baker Street'
+        '**Was willst du machen?** [1/2]\n'
+        '1. Die Nachricht Inspektor Lestrade zeigen\n'
+        '2. Inspektor Lestrade sagen, dass du dich nicht '
+        'wohl fühlst und gehen musst – in Wahrheit gehst du '
+        'aber in die Baker Street\n'
     )
     print(prompt0)
     ans0: int = int(input(prompt1))
@@ -390,37 +392,37 @@ def papier_allein_lesen(s: str) -> str:
 
 def papier_zeigen(s: str) -> str:
     prompt0: str = (
-        ' Du zeigst Inspektor Lestrade das Papier.'
-        ' "Nun, ', name, 'wir sollten schnellsten'
-        ' in die Baker Street gehen und Holmes'
-        ' behilflich sein. Es ist schließlich selten'
-        ' , dass er überhaupt mal die Hilfe von Leuten'
-        ' außer Watson benötigt '
-        ' Kommen Sie mit? [1/2]"'
+        'Du zeigst Inspektor Lestrade das Papier. '
+        '"Nun, ', name, ', wir sollten schnellsten '
+        'in die Baker Street gehen und Holmes '
+        'behilflich sein. Es ist schließlich selten, '
+        'dass er überhaupt mal die Hilfe von Leuten '
+        'außer Watson benötigt. \n'
+        'Kommen Sie mit? [1/2]"\n'
     )
     print(prompt0)
     prompt1: str = (
-        '1. Ja, klar!'
-        '2. Nein...'
+        '1. Ja, klar!\n'
+        '2. Nein...\n'
     )
     ans0: int = int(input(prompt1))
 
     if ans0 == 1:
         prompt2: str = (
-            ' Du fährst also mit Lestrade in die Baker Street.'
-            ' Jetzt kann das Abenteuer richtig beginnen! '
-            ' Aber das erfahren wir erst im nächsten Teil des '
-            ' **Sherlock Holmes Text Adventure**...'
-            ' Danke fürs Spielen! :) '
+            'Du fährst daher mit Lestrade in die Baker Street. '
+            'Jetzt kann das Abenteuer richtig beginnen! '
+            'Aber das erfahren wir erst im nächsten Teil des '
+            '**Sherlock Holmes Text Adventure**... '
+            'Danke fürs Spielen! :) '
         )
         print(prompt2)
         return s
     elif ans0 == 2:
         prompt3 = (
-            ' Lestrade: "Schade, aber kann ich Sie verstehen.'
-            ' Es könnte ja schließlich auch gefährlich werden!"\n'
-            ' Und hiermit endet das **Sherlock Holmes Text Adventure**'
-            ' Danke fürs Spielen! :) '
+            'Lestrade: "Schade, aber kann ich Sie verstehen. '
+            'Es könnte ja schließlich auch gefährlich werden!"\n'
+            'Und hiermit endet das **Sherlock Holmes Text Adventure**\n'
+            'Danke fürs Spielen! :) '
         )
         print(prompt3)
         return s
@@ -432,23 +434,22 @@ def papier_zeigen(s: str) -> str:
 
 def lestrade_arrives(s: str) -> str:
     prompt0: str = (
-        'Du fühlst, wie dich jemand schüttelt, während du langsam',
-        'wieder zu Bewusstsein kommst.'
-        'Wie viel Zeit ist wohl vergangen?',
-        name, '", was ist passiert?"'
-        'hörst du Inspektor Lestrade hektisch sagen.'
-        'Du setzt dich langsam auf und'
-        'stützt dich dabei auf dem Boden ab. Dabei bemerkst du,'
-        'dass unter deiner Hand ein zerknülltes Blatt Papier liegt'
+        'Du fühlst, wie dich jemand schüttelt, während du langsam '
+        'wieder zu Bewusstsein kommst. '
+        'Wie viel Zeit ist wohl vergangen? ', name,
+        '", was ist passiert?" '
+        'hörst du Inspektor Lestrade hektisch sagen. '
+        'Du setzt dich langsam auf und '
+        'stützt dich dabei auf dem Boden ab. Dabei bemerkst du, '
+        'dass unter deiner Hand ein zerknülltes Blatt Papier liegt.'
     )
+    print(prompt0)
     ans0: int = int(input(
-        '**Was möchtest du tun?** [1/2]'
+        '**Was möchtest du tun?** [1/2]\n'
         '1. Das Papier direkt Inspektor Lestrade zeigen.\n'
-        '2. Das Papier unauffällig in der Hand behalten'
+        '2. Das Papier unauffällig in der Hand behalten '
         'und dem Inspektor nicht zeigen\n'
     ))
-    print(prompt0)
-    print(ans0)
 
     if ans0 == 1:
         return papier_allein_lesen(s)
@@ -463,23 +464,21 @@ def lestrade_arrives(s: str) -> str:
 def stolpern(s: str) -> str:
     prompt0: str = (
         'Du bewegst dich einige Schritte zurück, musst dann '
-        'aber straucheln.'
+        'aber straucheln. '
         '"Mist, bin ich etwa auf einer Nacktschnecke ausgerutscht?" '
-        'geht es dir durch den Kopf '
-        'bevor du hart auf dem Boden aufschlägst.'
+        'geht es dir durch den Kopf, '
+        'bevor du hart auf dem Boden aufschlägst. '
         'Du hörst im Hintergrund ein Auto vor der '
-        'Einfahrt des Hauses parken.'
+        'Einfahrt des Hauses parken. '
         'Dann verlierst du das Bewusstsein...'
     )
-    ans0: int = int(input(
-        '**Was willst du nun tun?** [1/2/3]'
-        '1. Bewusstlos warten \n'
-        '2. Das Spiel beenden\n'
-        '3. Das Spiel von vonre beginnen\n'
-    ))
     print(prompt0)
-    print(ans0)
-
+    ans0: int = int(input(
+        '**Was willst du nun tun?** [1/2/3]\n'
+        '1. Bewusstlos werden und warten... \n'
+        '2. Das Spiel beenden\n'
+        '3. Das Spiel von vorne beginnen\n'
+    ))
     if ans0 == 1:
         return lestrade_arrives(s)
     elif ans0 == 2:
@@ -487,31 +486,31 @@ def stolpern(s: str) -> str:
     elif ans0 == 3:
         return enter_game(s)
     else:
-        prompt1: str = 'Ungültige Eingabe. Entscheide dich für 1., 2. oder 3.'
+        prompt1: str = (
+            'Ungültige Eingabe. Entscheide dich für 1., 2. oder 3.'
+        )
         print(prompt1)
         return stolpern(s)
 
 
 def beobachten(s: str) -> str:
     prompt0: str = (
-        'Jetzt stehst du hinter der Hecke und beobachtest'
-        'den mutmaßlichen Einbrecher.'
-        'Du schaust etwas genauer hin und siehst, dass'
-        'es sich um niemand anderen als Sherlock Holmes handelt.'
-        'Aber Sherlock Holmes bricht doch nirgendwo ein, es sei'
+        'Jetzt stehst du hinter der Hecke und beobachtest '
+        'den mutmaßlichen Einbrecher. '
+        'Du schaust etwas genauer hin und siehst, dass '
+        'es sich um niemand anderen als Sherlock Holmes handelt. '
+        'Aber Sherlock Holmes bricht doch nirgendwo ein, es sei '
         'denn er hat einen Fall!'
     )
-    prompt1: str = (
-        '**Was hast du jetzt vor?** [1/2/3]'
-        '1. Du gehst doch ins Haus hinein. Du willst nämlich'
-        'wissen, was Sherlock Holmes dort macht\n'
-        '2. Aus irgendwelchen Gründen willst du dir den'
-        'Gartenzwerg direkt hinter dir nochmal genauer anschauen'
-        'und drehst dich um'
-
-    )
     print(prompt0)
-    ans0: int = int(input(prompt1))
+    ans0: int = int(input(
+        '**Was hast du jetzt vor?** [1/2/3]\n'
+        '1. Du gehst doch ins Haus hinein. Du willst nämlich '
+        'wissen, was Sherlock Holmes dort macht\n'
+        '2. Aus irgendwelchen Gründen willst du dir den '
+        'Gartenzwerg direkt hinter dir nochmal genauer anschauen '
+        'und drehst dich um\n'
+    ))
 
     if ans0 == 1:
         return inside_house(s)
@@ -525,27 +524,28 @@ def beobachten(s: str) -> str:
 
 def gesicht_am_fenster(s: str) -> str:
     prompt0: str = (
-        'Du traust dich nicht hineinzugehen, aber starrst wie gebannt'
-        'auf das Fenster, in dem sich das Taschenlampenlicht bewergt.'
+        'Du traust dich nicht hineinzugehen, aber starrst wie gebannt '
+        'auf das Fenster, in dem sich das Taschenlampenlicht bewegt. '
         'Auf einmal siehst du ein bleiches Gesicht am Fenster. '
         'Die Person hat noch nicht nach draußen gesehen und '
         'dich noch nicht bemerkt... \n'
     )
     print(prompt0)
     ans1: int = int(input(
-        '**Was wirst du tun?** [1/2/3]'
+        '**Was wirst du tun?** [1/2/3]\n'
         '1. Schnell wegrennen\n'
         '2. Dich hinter eine Hecke ducken und weiter beobachten\n'
-        '3. Ins Haus hineingehen, denn irgendwie hast du doch Mut bekommen.'
+        '3. Ins Haus hineingehen, denn irgendwie hast du doch Mut bekommen.\n'
     ))
-    print(ans1)
 
     if ans1 == 1:
         return stolpern(s)
     elif ans1 == 2:
         return beobachten(s)
     else:
-        prompt1: str = 'Bitte entscheide dich für 1., 2. oder 3.'
+        prompt1: str = (
+            'Bitte entscheide dich für 1., 2. oder 3.'
+        )
         print(prompt1)
         return inside_house(s)
 
